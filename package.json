@@ -1,7 +1,7 @@
 {
   "name": "jsqrcode",
   "version": "0.0.1",
-  "description": "a node port of LazarSoft's jsqrcode decoder",
+  "description": "a node port of Lazar Laszlo's `jsqrcode` qr code decoder",
   "main": "src/qrcode.js",
   "dependencies": {
     "canvas": "~0.13.1"
