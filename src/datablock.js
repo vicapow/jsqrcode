@@ -115,3 +115,5 @@ DataBlock.getDataBlocks=function(rawCodewords,  version,  ecLevel)
 	}
 	return result;
 }
+
+module.exports = DataBlock;

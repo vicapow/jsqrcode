@@ -1,0 +1,28 @@
+{
+  "name": "jsqrcode",
+  "version": "0.0.1",
+  "description": "a node port of LazarSoft's jsqrcode decoder",
+  "main": "src/qrcode.js",
+  "dependencies": {
+    "canvas": "~0.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LazarSoft/jsqrcode.git"
+  },
+  "keywords": [
+    "qr",
+    "code",
+    "qrcode",
+    "jsqrcode",
+    "decode",
+    "decoder",
+    "read",
+    "reader"
+  ],
+  "author": "Victor Powell <vicapow@gmail.com>"
+}
