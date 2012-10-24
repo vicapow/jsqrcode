@@ -1,5 +1,4 @@
-
-# A port of Lazar Laszlo's [jsqrcode](https://github.com/LazarSoft/jsqrcode) module for decoding QR Codes.
+# A Node.JS port of Lazar Laszlo's [jsqrcode](https://github.com/LazarSoft/jsqrcode) for decoding QR Codes.
 
 ## Usage
 
