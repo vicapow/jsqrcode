@@ -6,3 +6,5 @@
   var qrcode = require('qrcode')
   console.log(qrcode.decode(image))
 ````
+
+See test.js for a more detailed example
