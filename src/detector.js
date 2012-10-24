@@ -317,8 +317,6 @@ function Detector(image)
     }
   
   this.detect = function() {
-    console.log('qrcode.width: ' + qrcode.width)
-    console.log('qrcode.height: ' + qrcode.height)
     var info =  new FinderPatternFinder().findFinderPattern(this.image);
     return this.processFinderPatternInfo(info);
   }
