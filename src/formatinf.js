@@ -23,7 +23,7 @@
 */
 
 var ErrorCorrectionLevel = require('./errorlevel');
-var qrcode = require('./qrcode');
+var qrcode = require('./qrcode')();
 
 
 var FORMAT_INFO_MASK_QR = 0x5412;

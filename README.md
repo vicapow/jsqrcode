@@ -3,8 +3,16 @@
 ## Usage
 
 ````javascript
-  var qrcode = require('qrcode')
-  console.log(qrcode.decode(image))
-````
+    var Canvas = require('canvas')
+      , Image = Canvas.Image
+      , qrcode = require('jsqrcode')(Canvas)
 
-See test.js for a more detailed example
+    var filename = __dirname + '/qrcode.png'
+
+    var image = new Image()
+    image.onload = function(){
+      var result = qrcode.decode(image)
+      console.log('result of qr code: ' + result);
+    }
+    image.src = filename
+````

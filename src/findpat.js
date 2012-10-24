@@ -22,7 +22,7 @@
 * limitations under the License.
 */
 
-var qrcode = require('./qrcode');
+var qrcode = require('./qrcode')();
 var assert = require('assert');
 
 

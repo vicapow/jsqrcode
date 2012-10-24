@@ -24,7 +24,7 @@
 
 var PerspectiveTransform = require('./perspective-transform');
 var BitMatrix = require('./bitmat');
-var qrcode = require('./qrcode');
+var qrcode = require('./qrcode')();
 
 GridSampler = {};
 

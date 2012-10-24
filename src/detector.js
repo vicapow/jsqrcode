@@ -25,7 +25,7 @@
 var grid = require('./grid');
 var Version = require('./version');
 var PerspectiveTransform = require('./perspective-transform');
-var qrcode = require('./qrcode');
+var qrcode = require('./qrcode')();
 var AlignmentPatternFinder = require('./alignpat');
 var FinderPatternFinder = require('./findpat');
 

@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "a node port of Lazar Laszlo's `jsqrcode` qr code decoder",
   "main": "src/qrcode.js",
-  "dependencies": {
-    "canvas": "~0.13.1"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
