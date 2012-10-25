@@ -21,10 +21,33 @@ module.exports = function(Canvas){
   if(qrcode) return qrcode;
   // if not, create it, then return it
   qrcode = {};
-
-  if(!Canvas) Canvas = require('canvas');
+  var Image = null;
+  
+  if(typeof window!='undefined') {
+    // we're in the browser
+    if(typeof HTMLCanvasElement !== 'undefined' ){
+      function createCanvas(width,height){
+        var canvas = document.createElement("canvas");
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        return canvas;
+      }
+    }else throw new Error("the HTML5 Canvas element is not supported in "
+      + "this browser");
+    Image = window.Image;
+    if(!Image) throw new Error("the Image element is not supported in "
+      + "this browser");
+  }else{
+    // // on the server!
+    function createCanvas(width,height){
+      return new Canvas(width,height);
+    }
+    var s = require; //trick browserify into not including canvas
+    if(!Canvas) Canvas = s('canvas');
+    Image = Canvas.Image;
+  }
+  
   var Decoder = require('./decoder');
-  var Image = Canvas.Image;
   var grid = require('./grid');
   var Detector = require('./detector');
 
@@ -68,9 +91,9 @@ module.exports = function(Canvas){
       return imageLoaded(image)
     }
     function imageLoaded(image){
-      canvas_qr = new Canvas(image.width,image.height);
+      canvas_qr = createCanvas(image.width,image.height);
       context = canvas_qr.getContext('2d');
-      var canvas_out = new Canvas(image.width,image.height);
+      var canvas_out = createCanvas(image.width,image.height);
       if(canvas_out!==null){
         var outctx = canvas_out.getContext('2d');
         outctx.clearRect(0, 0, 320, 240);
