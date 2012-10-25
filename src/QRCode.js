@@ -21,12 +21,12 @@ module.exports = function(Canvas){
   if(qrcode) return qrcode;
   // if not, create it, then return it
   qrcode = {};
-  var Image = null;
+  var Image = null, isCanvas = null, createCanvas = null;
   
   if(typeof window!='undefined') {
     // we're in the browser
     if(typeof HTMLCanvasElement !== 'undefined' ){
-      function createCanvas(width,height){
+      createCanvas = function(width,height){
         var canvas = document.createElement("canvas");
         canvas.setAttribute('width', width);
         canvas.setAttribute('height', height);
@@ -37,10 +37,16 @@ module.exports = function(Canvas){
     Image = window.Image;
     if(!Image) throw new Error("the Image element is not supported in "
       + "this browser");
+    isCanvas = function(instance){
+      return instance instanceof HTMLCanvasElement;
+    }
   }else{
     // // on the server!
-    function createCanvas(width,height){
+    createCanvas = function(width,height){
       return new Canvas(width,height);
+    }
+    isCanvas = function(instance){
+      return instance instanceof Canvas;
     }
     var s = require; //trick browserify into not including canvas
     if(!Canvas) Canvas = s('canvas');
@@ -71,8 +77,8 @@ module.exports = function(Canvas){
 
   qrcode.decode = function(src){
     var canvas_qr = null
-        , context = null
-    if(src instanceof Canvas){
+        , context = null;
+    if( isCanvas(src) ){
       canvas_qr = src;
       context = canvas_qr.getContext('2d');
       qrcode.width = canvas_qr.width;

@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/LazarSoft/jsqrcode.git"
+    "url": "https://github.com/vicapow/jsqrcode"
   },
   "keywords": [
     "qr",
@@ -22,5 +22,5 @@
     "read",
     "reader"
   ],
-  "author": "Lazar Laszlo"
+  "author": "Lazar Laszlo, Victor Powell <vicapow@gmail.com>"
 }
