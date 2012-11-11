@@ -73,8 +73,6 @@ module.exports = function(Canvas){
 
   qrcode.sizeOfDataLengthInfo =  [  [ 10, 9, 8, 8 ],  [ 12, 11, 16, 10 ],  [ 14, 13, 16, 12 ] ];
 
-  qrcode.callback = null;
-
   qrcode.decode = function(src){
     var canvas_qr = null
         , context = null;
@@ -84,22 +82,16 @@ module.exports = function(Canvas){
       qrcode.width = canvas_qr.width;
       qrcode.height = canvas_qr.height;
       qrcode.imagedata = context.getImageData(0, 0, qrcode.width, qrcode.height);
-      qrcode.result = qrcode.process(context);
-      if(qrcode.callback!=null) qrcode.callback(qrcode.result);
-      return qrcode.result;
+      return qrcode.process(context);
     }else if( src instanceof Image){
-      return imageLoaded(src)
+      return imageLoaded(src);
     }else{
-      var image = new Image;
-      image.onload = function(){  imageLoaded(image) }
-      image.onerror = function(e){ throw e }
-      image.src = src;
-      return imageLoaded(image)
+      throw new Error('jsqrcode can only decode a canvas or image element');
     }
     function imageLoaded(image){
-      canvas_qr = createCanvas(image.width,image.height);
+      canvas_qr = createCanvas(image.width, image.height);
       context = canvas_qr.getContext('2d');
-      var canvas_out = createCanvas(image.width,image.height);
+      var canvas_out = createCanvas(image.width, image.height);
       if(canvas_out!==null){
         var outctx = canvas_out.getContext('2d');
         outctx.clearRect(0, 0, 320, 240);
@@ -111,17 +103,10 @@ module.exports = function(Canvas){
       try{
         qrcode.imagedata = context.getImageData(0, 0, canvas_qr.width, canvas_qr.height);
       }catch(e){
-        qrcode.result = "Cross domain image reading not supported in your browser! Save it to your computer then drag and drop the file!";
-        if(qrcode.callback!==null) qrcode.callback(qrcode.result);
-        return;
+        throw new Error("Cross domain image reading not supported in your "
+          + "browser! Save it to your computer then drag and drop the file!");
       }
-      try{
-        return qrcode.result = qrcode.process(context);
-      }catch(e){
-        throw e
-        return qrcode.result = "error decoding QR Code";
-      }
-      if(qrcode.callback!=null) qrcode.callback(qrcode.result);
+      return qrcode.process(context);
     }
   }
 
