@@ -394,7 +394,6 @@ function FinderPatternFinder()
       if (startSize < 3)
       {
         // Couldn't find enough finder patterns
-        console.trace();
         throw new Error("Couldn't find enough finder patterns");
       }
       
