@@ -1,6 +1,6 @@
 # A Node.JS port of Lazar Laszlo's [jsqrcode](https://github.com/LazarSoft/jsqrcode) for decoding QR Codes.
 
-Now you use can it in node or in the browser!
+Now you can use it in node or in the browser!
 
 ## Usage
 
