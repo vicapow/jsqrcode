@@ -24,6 +24,11 @@ module.exports = function(Canvas){
   var Image = null, isCanvas = null, createCanvas = null;
   
   if(typeof window!='undefined') {
+    // XXX Fix for node-webkit not finding HTMLCanvasElement and document
+    // outside window.
+    HTMLCanvasElement = window.HTMLCanvasElement;
+    document = window.document;
+
     // we're in the browser
     if(typeof HTMLCanvasElement !== 'undefined' ){
       createCanvas = function(width,height){
