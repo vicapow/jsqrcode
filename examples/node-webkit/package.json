@@ -1,0 +1,11 @@
+{
+  "name": "jsqrcode-node-webkit-example",
+  "version": "0.0.1",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "width": 612,
+    "height": 310
+  }
+}
+
