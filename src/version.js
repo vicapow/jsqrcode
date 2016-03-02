@@ -23,7 +23,7 @@
 */
 
 var BitMatrix = require('./bitmat');
-
+var FormatInformation = require('./formatinf');
 
 function ECB(count,  dataCodewords)
 {
